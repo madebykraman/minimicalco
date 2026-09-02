@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import './asset-overrides.css'
 
 export const metadata: Metadata = {
   title: 'The Minimical Co. | Independent Creative Studio',
