@@ -4,73 +4,115 @@ import { useState } from 'react'
 import { ArrowLeft, ArrowRight, ArrowUpRight, Plus, X } from 'lucide-react'
 
 const projects = [
-  { category: 'Fragrance / Brand / Digital', title: 'WHIFFF', year: '2026', text: 'A fragrance universe built around feeling, memory and the rituals of scent.', cls: 'p1' },
-  { category: 'Wedding / Brand Identity', title: 'Enchanted Vows', year: '2025', text: 'A cinematic identity for wedding films and photography, built around intimacy and timeless frames.', cls: 'p2' },
-  { category: 'Healthcare / Communication', title: 'Health Seva', year: '2025', text: 'A clearer visual language for a healthcare service built around access, trust and human connection.', cls: 'p3' },
-  { category: 'Packaging / Brand', title: 'PawPerity', year: '2025', text: 'A considered packaging system that turns an everyday pet essential into a memorable brand touchpoint.', cls: 'p4' },
-  { category: 'Event / Visual Identity', title: 'Jaano Junction', year: '2025', text: 'A civic townhall identity designed to make conversation, participation and public dialogue visible.', cls: 'p5' },
-]
-
-const services = [
-  ['01', 'Brand Identity', 'Positioning, naming, visual identity, art direction and brand systems that give an idea a recognisable point of view.'],
-  ['02', 'Digital Design', 'Websites and digital experiences where strategy, interaction, typography and visual craft operate as one system.'],
-  ['03', 'Motion Design', 'Motion systems, title design, social films, transitions and visual narratives built to give brands rhythm.'],
-  ['04', 'Film & Production', 'Creative direction, cinematography, production, editing and post for films that feel considered from first frame to last.'],
-  ['05', 'Photography', 'Campaign, product, portrait, lifestyle and editorial imagery shaped around the identity of the work.'],
+  ['Brand / Identity', 'WHIFFF', 'Fragrance brand world, identity and digital experience.'],
+  ['Digital / Brand', 'The Minimical Co.', 'Independent creative practice and studio identity.'],
+  ['Wedding / Film', 'Enchanted Vows', 'Cinematic identity for wedding films and photography.'],
+  ['Healthcare / Communication', 'Health Seva', 'A clearer visual language for a healthcare service.'],
+  ['Packaging / Brand', 'PawPerity', 'Packaging system for an everyday pet essential.'],
 ]
 
 const faqs = [
-  ['What does Minimical do?', 'Minimical is an independent creative practice working across branding, digital design, motion, photography and film.'],
-  ['What kind of clients do you work with?', 'Startups, founders, independent brands, cultural projects and established businesses that care about how their ideas are made visible.'],
-  ['Can one project cover strategy, design and production?', 'Yes. Projects can begin with a loose brief and move through strategy, identity, digital, motion and production as far as the idea requires.'],
-  ['Where is Minimical based?', 'Patna, Bihar, India. The studio works remotely with clients and collaborators beyond its home city.'],
-  ['How does a project start?', 'A short conversation establishes the problem, ambition, scope and timing. The engagement is then shaped around the actual needs of the project.'],
-  ['Do you take smaller projects?', 'Yes, when the idea and scope make sense. A focused identity, campaign, website or film can be approached independently.'],
+  ['What industries does The Minimical & Co. work with?', 'We partner with founders, brands, cultural projects, startups and established businesses across industries where design, communication and visual storytelling can create measurable impact.'],
+  ['How does your creative process work?', 'We start with discovery and analysis, followed by strategic direction, design, production and refinement. The process flexes around the project rather than forcing every brief through the same formula.'],
+  ['Do you offer customized solutions?', 'Yes. Every project is shaped around its goals, audience, context and scope. There is no one-size-fits-all package.'],
+  ['How long does a typical project take?', 'Timelines vary by scope. A focused identity or campaign may move quickly, while a complete brand and digital system takes longer. Milestones are agreed before production begins.'],
+  ['Can you help with implementation, not just strategy?', 'Yes. Strategy can move directly into identity, digital design, motion, photography, film and production so the idea survives all the way into execution.'],
+  ['How can I get started?', 'Send a short note about what you are building, what needs to change and what you need made. We will use that to understand the opportunity and define the next step.'],
+  ['What makes The Minimical & Co. different?', 'We work across strategy, design and production as one creative practice. That lets the same idea carry consistently from positioning to final frame.'],
+  ['Do you work with startups as well as established companies?', 'Yes. The studio works with early-stage ideas, independent brands and established teams, adapting the scale of the engagement to the actual need.'],
 ]
 
-const clients = ['WHIFFF', 'Health Seva', 'PawPerity', 'Sampann Gurukul', 'Enchanted Vows', 'Jaano Junction', 'Lucky Paul Photography', 'Minimical Studio Films']
+const services = [
+  ['Brand Strategy', 'Positioning, naming and strategic direction that give the brand a clear place in the world.'],
+  ['Brand Identity', 'Visual systems, art direction and identity design built to be recognisable and usable.'],
+  ['Digital Design', 'Websites and digital experiences where structure, interaction and visual language work together.'],
+  ['Motion & Film', 'Motion design, cinematography, production, editing and post for stories that need to move.'],
+]
+
+const logos = ['WHIFFF', 'HEALTH SEVA', 'PAWPERITY', 'SAMPANN GURUKUL', 'ENCHANTED VOWS', 'LUCKY PAUL', 'FRAMEBYFRAME', 'MINIMICAL']
 
 export default function Home() {
   const [menu, setMenu] = useState(false)
-  const [open, setOpen] = useState<number | null>(null)
-  const [projectIndex, setProjectIndex] = useState(0)
-  const nextProject = () => setProjectIndex((i) => Math.min(i + 1, projects.length - 1))
-  const previousProject = () => setProjectIndex((i) => Math.max(i - 1, 0))
+  const [faq, setFaq] = useState<number | null>(null)
+  const [project, setProject] = useState(0)
 
-  return <main>
-    <header className="nav">
-      <a className="wordmark" href="#top">THE MINIMICAL <span>CO.</span></a>
-      <nav className="desktopNav"><a href="#about">About</a><a href="#projects">Projects</a><a href="#services">Services</a><a href="#contact">Contact</a></nav>
-      <a className="call desktopNav" href="mailto:contact@minimical.online">Start a project <ArrowUpRight size={15} /></a>
-      <button className="menuBtn" aria-label="Toggle menu" onClick={() => setMenu(!menu)}>{menu ? <X size={20} /> : 'MENU'}</button>
-    </header>
+  return (
+    <main>
+      <header className="nav">
+        <a className="wordmark" href="#top">THE MINIMICAL <span>&amp; CO.</span></a>
+        <nav className="desktopNav">
+          <a href="#top">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#services">Services</a><a href="#contact">Contact</a>
+        </nav>
+        <a className="book desktopNav" href="mailto:contact@minimical.online?subject=Project%20enquiry">Book a call <ArrowUpRight size={14}/></a>
+        <button className="menuBtn" onClick={() => setMenu(!menu)} aria-label="Open menu">{menu ? <X size={20}/> : 'MENU'}</button>
+      </header>
+      {menu && <nav className="mobileMenu"><a href="#top" onClick={() => setMenu(false)}>Home</a><a href="#about" onClick={() => setMenu(false)}>About</a><a href="#projects" onClick={() => setMenu(false)}>Projects</a><a href="#services" onClick={() => setMenu(false)}>Services</a><a href="#contact" onClick={() => setMenu(false)}>Contact</a><a href="mailto:contact@minimical.online">Book a call ↗</a></nav>}
 
-    {menu && <div className="mobileMenu"><a href="#about" onClick={() => setMenu(false)}>About</a><a href="#projects" onClick={() => setMenu(false)}>Projects</a><a href="#services" onClick={() => setMenu(false)}>Services</a><a href="#contact" onClick={() => setMenu(false)}>Contact</a></div>}
+      <section className="hero" id="top">
+        <div className="heroMeta"><span>Since 2022</span><span>Patna, India</span><span>Independent creative practice</span></div>
+        <div className="heroStatement"><h1>Design &amp;<br/>Branding<br/><i>Studio</i></h1><p>Step into our design studio, where we craft stunning designs and visuals that tell captivating stories.</p><a className="roundCta" href="#about">About us <ArrowUpRight size={13}/></a></div>
+        <div className="heroVisual"><img src="/visual-asset-pending.svg" alt="Visual asset placeholder"/><div className="heroOverlay">THE MINIMICAL &amp; CO.</div></div>
+      </section>
 
-    <section className="hero" id="top">
-      <div className="meta"><span>Since 2022</span><span>Patna, India</span><span>Independent Creative Practice</span></div>
-      <div className="heroVisual" aria-hidden="true"><div className="orbit o1" /><div className="orbit o2" /><div className="orbit o3" /><div className="orbitalType">IDENTITY · DIGITAL · MOTION · FILM · PHOTOGRAPHY ·</div><div className="heroDot" /></div>
-      <div className="heroCopy"><h1>Design &<br /><i>Creative</i><br />Studio</h1><p>We build brands, digital experiences, moving images and films for people making something worth remembering.</p><a href="#about" className="circleLink">Explore <span>↓</span></a></div>
-    </section>
+      <section className="process" id="about">
+        <div className="sectionIntro"><span>Our Approach</span><h2>From the first<br/>thought to the <i>final frame.</i></h2></div>
+        <div className="processGrid">
+          {[
+            ['01','Discover','We start by understanding your goals, challenges, audience and market landscape.'],
+            ['02','Strategize','We craft a focused creative direction that aligns with the idea and the people it needs to reach.'],
+            ['03','Execute','We turn strategy into identity, digital experiences, motion, photography and film.'],
+            ['04','Evolve','We refine the work, measure what matters and build systems that can continue to grow.'],
+          ].map(([n,t,d]) => <article key={n}><small>{n}</small><h3>{t}</h3><p>{d}</p></article>)}
+        </div>
+      </section>
 
-    <section className="process" id="about"><div className="sectionHead"><span>01 / Approach</span><h2>Ideas become visible<br /><i>when everything aligns.</i></h2></div><div className="processGrid">{[['Discover','We understand the ambition, audience, context and tension behind the brief.'],['Define','We find the clearest idea and establish a visual direction around it.'],['Create','We turn the direction into identities, images, interfaces, motion and moving work.'],['Evolve','We refine the system so it can live, grow and stay recognisably yours.']].map(([title,text],i)=><article key={title}><small>0{i+1}</small><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+      <section className="projects" id="projects">
+        <div className="sectionIntro"><span>Selected Projects</span><h2>Explore the work<br/>and the ideas <i>behind it.</i></h2><a className="textLink" href="/projects">View all projects <ArrowUpRight size={14}/></a></div>
+        <div className="projectViewport"><div className="projectRail" style={{transform:`translateX(calc(-${project} * (var(--project-card) + var(--project-gap))))`}}>
+          {projects.map(([cat,title,text], i) => <article className="projectCard" key={title}><div className="projectImage"><img src="/visual-asset-pending.svg" alt=""/><span>{String(i+1).padStart(2,'0')}</span><em>{title}</em></div><div className="projectInfo"><small>{cat}</small><h3>{title}</h3><p>{text}</p><ArrowUpRight size={16}/></div></article>)}
+        </div></div>
+        <div className="railControls"><button onClick={() => setProject(Math.max(0, project - 1))} aria-label="Previous project"><ArrowLeft size={17}/></button><button onClick={() => setProject(Math.min(projects.length - 1, project + 1))} aria-label="Next project"><ArrowRight size={17}/></button></div>
+      </section>
 
-    <section className="projects" id="projects"><div className="sectionHead"><span>02 / Selected Projects</span><h2>Work with a<br /><i>point of view.</i></h2></div><div className="projectViewport"><div className="projectRail" style={{ transform: `translateX(calc(-${projectIndex} * (var(--project-width) + var(--project-gap))))` }}>{projects.map((p,i)=><article className="project" key={p.title}><div className={'projectImage ' + p.cls}><span>{String(i+1).padStart(2,'0')}</span><b>{p.year}</b><em>{p.title}</em></div><div className="projectInfo"><div><small>{p.category}</small><h3>{p.title}</h3></div><p>{p.text}</p><ArrowUpRight /></div></article>)}</div></div><div className="railControls"><button aria-label="Previous project" onClick={previousProject}><ArrowLeft /></button><button aria-label="Next project" onClick={nextProject}><ArrowRight /></button></div></section>
+      <section className="services" id="services">
+        <div className="sectionIntro"><span>Our Services</span><h2>Everything an<br/><i>idea needs.</i></h2></div>
+        <div className="serviceFeature"><div className="serviceVisual"><img src="/visual-asset-pending.svg" alt=""/></div><div className="serviceContent"><span className="serviceIndex">01</span><h3>{services[0][0]}</h3><p>{services[0][1]}</p><a className="roundCta dark" href="mailto:contact@minimical.online">Book a call <ArrowUpRight size={13}/></a></div></div>
+        <div className="serviceTabs">{services.slice(1).map(([t,d], i) => <div key={t}><span>0{i+2}</span><h3>{t}</h3><p>{d}</p></div>)}</div>
+      </section>
 
-    <section className="services" id="services"><div className="sectionHead"><span>03 / Capabilities</span><h2>Everything the<br /><i>idea needs.</i></h2></div><div className="serviceList">{services.map(([no,title,text])=><article key={title}><div className="serviceNo">{no}</div><div><h3>{title}</h3><p>{text}</p></div><ArrowUpRight /></article>)}</div></section>
+      <section className="insights">
+        <div className="sectionIntro"><span>Strategic Insights</span><h2>Clear thinking.<br/><i>Better making.</i></h2><p>We combine creative thinking with practical strategy to make work that has a reason to exist.</p></div>
+        <div className="logoGrid">{logos.map(x => <div key={x}>{x}</div>)}</div>
+        <div className="metrics"><div><strong>35+</strong><span>projects, brands and collaborations across disciplines</span></div><div><strong>6+</strong><span>years of independent creative practice</span></div></div>
+      </section>
 
-    <section className="statement"><div className="statementInner"><span>Minimical is an independent</span><h2>design, branding,<br />motion & <i>film</i> studio.</h2><span>Based in India. Working beyond it.</span></div></section>
+      <section className="experience">
+        <div className="experienceBlock"><div className="experienceImage"><img src="/visual-asset-pending.svg" alt=""/></div><div><span>Global Experience</span><h2>Ideas should travel<br/><i>without losing themselves.</i></h2><p>From local founders and independent brands to teams working across markets, our experience helps ideas find a visual language that can move between audiences and platforms.</p></div></div>
+        <div className="experienceBlock reverse"><div><span>Data-Driven Approach</span><h2>Creative intuition,<br/><i>with a reason behind it.</i></h2><p>We use research, audience context and performance signals to sharpen creative decisions. The result is work that looks considered and communicates with intent.</p></div><div className="experienceImage"><img src="/visual-asset-pending.svg" alt=""/></div></div>
+      </section>
 
-    <section className="proof"><div className="sectionHead"><span>04 / Experience</span><h2>Small studio.<br /><i>Wide practice.</i></h2></div><div className="stats"><div><strong>500+</strong><span>projects across design, brand, content & film</span></div><div><strong>6+</strong><span>years of creative practice</span></div><div><strong>01</strong><span>independent practice built around the work</span></div></div><div className="proofText"><p>Minimical moves between strategy and execution. A visual identity, campaign, website, film or complete brand world can begin from the same place: finding the idea that deserves to be seen.</p><a href="#contact">Work with us <ArrowUpRight /></a></div></section>
+      <section className="testimonials">
+        <div className="sectionIntro"><span>From Our Clients</span><h2>Trusted by people<br/><i>who care about the work.</i></h2><p>Selected words from collaborators and clients.</p></div>
+        <div className="testimonialGrid">
+          {[
+            ['The work brought clarity to a complex idea and gave the brand a visual language we could actually use.', 'Founder / Independent Brand'],
+            ['Minimical understood the brief quickly and carried the idea consistently from strategy through production.', 'Creative Partner / Studio'],
+            ['Thoughtful, precise and deeply involved in the making. The final work felt like ours from the first frame.', 'Brand Lead / Client'],
+          ].map(([q,a]) => <blockquote key={a}><span>“</span><p>{q}</p><small>{a}</small></blockquote>)}
+        </div>
+      </section>
 
-    <section className="clients"><div className="sectionHead"><span>05 / Selected Collaborations</span><h2>Built with people<br /><i>worth building with.</i></h2></div><div className="clientGrid">{clients.map(x=><div key={x}>{x}</div>)}</div></section>
+      <section className="faq">
+        <div className="sectionIntro"><span>Questions, Answered</span><h2>Things worth<br/><i>knowing.</i></h2><p>Get quick answers about how we work, what we make and how a project can begin.</p></div>
+        <div className="faqList">{faqs.map(([q,a], i) => <div className="faqItem" key={q}><button onClick={() => setFaq(faq === i ? null : i)}><span>{q}</span>{faq === i ? <X size={18}/> : <Plus size={18}/>}</button>{faq === i && <p>{a}</p>}</div>)}</div>
+      </section>
 
-    <section className="testimonials"><div className="quoteMark">“</div><blockquote>Good creative work should make the idea feel inevitable, not decorated.</blockquote><p>THE MINIMICAL CO. / CREATIVE PRINCIPLE</p></section>
+      <section className="contact" id="contact">
+        <div className="contactIntro"><span>Get In Touch</span><h2>Have a project<br/><i>in mind?</i></h2><a className="contactMail" href="mailto:contact@minimical.online">contact@minimical.online <ArrowUpRight size={19}/></a></div>
+        <div className="contactDetails"><div><small>OFFICE</small><p>Kankarbagh, Patna-20<br/>Bihar, India</p></div><div><small>CONTACT</small><p>+91 8709539814<br/><a href="mailto:contact@minimical.online">contact@minimical.online</a></p></div><div><small>SOCIAL</small><p><a href="https://www.instagram.com/theminimical/" target="_blank">Instagram</a><br/><a href="https://www.instagram.com/minimicalstudios.co/" target="_blank">Studio Instagram</a><br/><a href="https://www.linkedin.com/company/theminimical/" target="_blank">LinkedIn</a></p></div></div>
+      </section>
 
-    <section className="faq"><div className="sectionHead"><span>06 / Questions</span><h2>Things worth<br /><i>knowing.</i></h2></div><div>{faqs.map(([question,answer],i)=><div className="faqItem" key={question}><button onClick={()=>setOpen(open===i?null:i)}><span>{question}</span>{open===i?<X/>:<Plus/>}</button>{open===i&&<p>{answer}</p>}</div>)}</div></section>
-
-    <section className="contact" id="contact"><div className="contactTop"><span>07 / Contact</span><h2>Have something<br /><i>worth making?</i></h2><a href="mailto:contact@minimical.online" className="bigMail">contact@minimical.online <ArrowUpRight /></a></div><div className="contactGrid"><div><small>STUDIO</small><p>Patna, Bihar<br />India</p></div><div><small>DIRECT</small><p>contact@minimical.online</p></div><div><small>SOCIAL</small><p><a href="https://www.instagram.com/theminimical/" target="_blank">Instagram</a><br /><a href="https://www.instagram.com/minimicalstudios.co/" target="_blank">Studio Instagram</a><br /><a href="https://www.linkedin.com/company/theminimical/" target="_blank">LinkedIn</a></p></div></div></section>
-
-    <footer><span>THE MINIMICAL & CO. © 2026</span><a href="#top">Back to top ↑</a><span>Built independently.</span></footer>
-  </main>
+      <footer><div className="footerBrand">THE MINIMICAL &amp; CO.</div><div><span>+91 8709539814</span><span>contact@minimical.online</span></div><div><span>Home</span><span>About</span><span>Projects</span><span>Services</span><span>Contact</span></div><small>© 2026 The Minimical &amp; Co. All rights reserved.</small></footer>
+    </main>
+  )
 }
