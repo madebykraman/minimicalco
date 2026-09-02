@@ -1,0 +1,4 @@
+.projectRail{--project-width:calc((100% - 72px)/5);--project-gap:18px}
+@media(max-width:1100px){.projectRail{--project-width:calc((100% - 36px)/3);--project-gap:18px}}
+@media(max-width:900px){.projectRail{--project-width:calc((100% - 18px)/2);--project-gap:18px}}
+@media(max-width:600px){.projectRail{--project-width:100%;--project-gap:0px}}
