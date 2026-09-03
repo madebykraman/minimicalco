@@ -1,0 +1,117 @@
+/* MINIMICAL EXPERIENCE SYSTEM
+   Navigation is treated as part of the identity, not a utility bar.
+   Motion is restrained, continuous and performance-safe.
+*/
+
+/* ---------- global motion ---------- */
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{overscroll-behavior-y:none}
+a,button{ -webkit-tap-highlight-color:transparent }
+a{transition:color .28s var(--ease),opacity .28s var(--ease)}
+
+/* ---------- entrance / loader ---------- */
+.minimicalLoader{position:fixed;inset:0;z-index:9999;background:#0a0710;color:#f7f2fb;display:flex;align-items:stretch;justify-content:space-between;padding:26px var(--pad);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;pointer-events:none;animation:loaderExit .9s var(--ease) 1.55s forwards}
+.minimicalLoader:before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(247,242,251,.12);transform:scaleX(0);transform-origin:left;animation:loaderLine 1.25s var(--ease) .15s forwards}
+.minimicalLoaderMark{font-size:10px;align-self:flex-start;opacity:.7}
+.minimicalLoaderMeta{font-size:9px;align-self:flex-start;color:#b79cff}
+.minimicalLoaderCore{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:17px}
+.minimicalLoaderCore strong{font-family:'Space Grotesk',Manrope,sans-serif;font-size:clamp(76px,12vw,170px);font-weight:600;letter-spacing:-.12em;line-height:.7;opacity:0;animation:loaderMark .8s var(--ease) .25s forwards}
+.minimicalLoaderCore span{font-size:8px;color:#b8afc2;opacity:0;animation:loaderText .6s ease .65s forwards}
+.minimicalLoaderCount{position:absolute;right:var(--pad);bottom:26px;font-size:10px;color:#b79cff;overflow:hidden}
+.minimicalLoaderCount:after{content:'100';display:block;animation:loaderCount 1.35s steps(10,end) .15s forwards}
+@keyframes loaderLine{to{transform:scaleX(1)}}
+@keyframes loaderMark{from{opacity:0;transform:translateY(22px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes loaderText{to{opacity:1}}
+@keyframes loaderCount{0%{content:'000'}10%{content:'010'}20%{content:'024'}30%{content:'037'}40%{content:'049'}50%{content:'061'}60%{content:'072'}70%{content:'081'}80%{content:'090'}90%{content:'097'}100%{content:'100'}}
+@keyframes loaderExit{0%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+
+/* ---------- page reveal ---------- */
+.studioPage,.innerPage{animation:pageEnter .85s var(--ease) both}
+@keyframes pageEnter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* ---------- desktop studio header: identity rail ---------- */
+.studioHeader{height:86px!important;padding:0 var(--pad)!important;background:rgba(10,7,16,.68)!important;backdrop-filter:blur(22px) saturate(125%);border-bottom:1px solid rgba(247,242,251,.13)!important;grid-template-columns:1fr auto 1fr!important}
+.studioHeader:before{content:'M / 01';position:absolute;left:var(--pad);bottom:9px;font:7px 'DM Mono',monospace;letter-spacing:.12em;color:rgba(183,156,255,.58);pointer-events:none}
+.studioHeader:after{content:'INDEPENDENT / PATNA / 2026';position:absolute;right:var(--pad);bottom:9px;font:7px 'DM Mono',monospace;letter-spacing:.12em;color:rgba(184,175,194,.48);pointer-events:none}
+.studioLogo{width:76px!important;position:relative;z-index:2;transition:transform .4s var(--ease)}
+.studioLogo:hover{transform:translateY(-1px)}
+.studioNav{height:48px;gap:0!important;border:1px solid rgba(247,242,251,.14);background:rgba(18,13,26,.52);backdrop-filter:blur(14px);overflow:hidden}
+.studioNav a{position:relative;display:flex;align-items:center;padding:0 20px!important;color:rgba(247,242,251,.62)!important;font:9px 'DM Mono',monospace!important;letter-spacing:.11em!important;text-transform:uppercase}
+.studioNav a:before{content:'00';position:absolute;left:20px;top:7px;font-size:6px;letter-spacing:.05em;color:rgba(183,156,255,.65);opacity:0;transform:translateY(4px);transition:opacity .25s,transform .25s}
+.studioNav a:nth-child(1):before{content:'01'}.studioNav a:nth-child(2):before{content:'02'}.studioNav a:nth-child(3):before{content:'03'}.studioNav a:nth-child(4):before{content:'04'}
+.studioNav a:after{content:'';position:absolute;left:18px;right:18px;bottom:0;height:1px;background:linear-gradient(90deg,#b79cff,#7c4bd4);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.studioNav a:hover{color:#f7f2fb!important;background:rgba(124,75,212,.08)}
+.studioNav a:hover:before{opacity:1;transform:none}.studioNav a:hover:after{transform:scaleX(1)}
+.studioHeaderRight{gap:13px!important}
+.studioHeaderRight:before{content:'●  AVAILABLE FOR SELECT PROJECTS';font:7px 'DM Mono',monospace;letter-spacing:.09em;color:#b79cff;white-space:nowrap;opacity:.85}
+.startLink{height:42px!important;padding:0 15px!important;border:1px solid rgba(183,156,255,.5)!important;border-bottom-color:#b79cff!important;background:rgba(124,75,212,.07);color:#f7f2fb!important;position:relative;overflow:hidden;transition:color .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease)!important}
+.startLink:before{content:'';position:absolute;inset:0;background:#b79cff;transform:translateY(102%);transition:transform .38s var(--ease);z-index:-1}
+.startLink:hover{color:#0a0710!important;border-color:#b79cff!important;transform:translateY(-2px)}
+.startLink:hover:before{transform:none}
+
+/* ---------- inner-page header receives same language ---------- */
+.innerPage .nav.siteHeader{height:82px!important;background:rgba(10,7,16,.68)!important;backdrop-filter:blur(22px) saturate(125%);border-bottom:1px solid rgba(247,242,251,.13)!important}
+.innerPage .nav.siteHeader .brandLink{width:76px!important;height:50px!important}
+.innerPage .nav.siteHeader .brandLogo{width:76px!important;height:auto!important}
+.innerPage .nav.siteHeader .desktopNav{height:46px;border:1px solid rgba(247,242,251,.14);gap:0!important}
+.innerPage .nav.siteHeader .desktopNav a{position:relative;padding:0 18px;font-size:9px}
+.innerPage .nav.siteHeader .desktopNav a:after{content:'';position:absolute;left:15px;right:15px;bottom:0;height:1px;background:#b79cff;transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.innerPage .nav.siteHeader .desktopNav a:hover:after{transform:scaleX(1)}
+.innerPage .nav.siteHeader .navActions:before{content:'● OPEN';font:7px 'DM Mono',monospace;letter-spacing:.1em;color:#b79cff;margin-right:5px}
+
+/* ---------- richer mobile navigation ---------- */
+@media(max-width:850px){
+  .studioHeader{height:76px!important;padding:0 5vw!important;grid-template-columns:1fr auto!important}
+  .studioHeader:before{content:'M / 01';left:5vw;bottom:6px;font-size:6px}
+  .studioHeader:after{content:'PATNA / 2026';right:5vw;bottom:6px;font-size:6px}
+  .studioLogo{width:70px!important}
+  .studioHeaderRight{gap:0!important}
+  .studioHeaderRight:before{display:none}
+  .mobileTrigger{display:flex!important;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid rgba(183,156,255,.45)!important;background:rgba(124,75,212,.08)!important;color:#f7f2fb;position:relative}
+  .mobileTrigger:before{content:'MENU';position:absolute;right:50px;font:7px 'DM Mono',monospace;letter-spacing:.1em;color:#b8afc2}
+  .mobileTrigger svg{transition:transform .35s var(--ease)}
+  .mobileTrigger:hover svg{transform:rotate(90deg)}
+  .mobileNav{position:fixed!important;z-index:95!important;top:76px!important;left:0;right:0;bottom:0;background:rgba(10,7,16,.97)!important;backdrop-filter:blur(24px);padding:15px 5vw 30px!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important;gap:0!important;border-bottom:1px solid var(--line);animation:menuIn .45s var(--ease)}
+  .mobileNav:before{content:'NAVIGATION / SELECT DESTINATION';font:7px 'DM Mono',monospace;letter-spacing:.12em;color:#b79cff;padding:10px 0 24px}
+  .mobileNav a{position:relative;display:flex;align-items:center;justify-content:space-between;padding:22px 0!important;border-bottom:1px solid var(--line);font-family:'Space Grotesk',Manrope,sans-serif!important;font-size:clamp(38px,11vw,62px)!important;line-height:.88!important;letter-spacing:-.07em!important;color:#f7f2fb!important}
+  .mobileNav a:before{content:'01';font:7px 'DM Mono',monospace;letter-spacing:.1em;color:#b79cff;align-self:flex-start;margin-top:4px}
+  .mobileNav a:nth-child(2):before{content:'02'}.mobileNav a:nth-child(3):before{content:'03'}.mobileNav a:nth-child(4):before{content:'04'}
+  .mobileNav a svg{color:#b79cff;transition:transform .35s var(--ease)}
+  .mobileNav a:hover svg{transform:translate(5px,-5px)}
+  .innerPage .nav.siteHeader{height:76px!important}
+  .innerPage .nav.siteHeader .brandLink,.innerPage .nav.siteHeader .brandLogo{width:70px!important}
+  .innerPage .nav.siteHeader .navActions:before{display:none}
+  .innerPage .nav.siteHeader .siteMobileNav{top:76px!important}
+}
+@keyframes menuIn{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+
+/* ---------- tactile micro-interactions ---------- */
+@media(hover:hover){
+  .studioPage .sectionLabel a,.studioPage .inlineLink,.studioPage .heroActions a,.studioPage .heroBottom a{position:relative}
+  .studioPage .sectionLabel a:after,.studioPage .inlineLink:after,.studioPage .heroActions a:after,.studioPage .heroBottom a:after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:1px;background:#b79cff;transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+  .studioPage .sectionLabel a:hover:after,.studioPage .inlineLink:hover:after,.studioPage .heroActions a:hover:after,.studioPage .heroBottom a:hover:after{transform:scaleX(1);transform-origin:left}
+  .mosaicItem .projectVisual{transition:transform .8s var(--ease),box-shadow .8s var(--ease),filter .8s var(--ease)!important}
+  .mosaicItem:hover .projectVisual{transform:scale(.975) translateY(-5px)!important;filter:saturate(1.08)}
+}
+
+/* ---------- utility details / scroll indicator ---------- */
+.studioHero{isolation:isolate}
+.studioHero .heroBottom:before{content:'SCROLL';position:absolute;left:50%;transform:translateX(-50%);font:7px 'DM Mono',monospace;letter-spacing:.14em;color:rgba(183,156,255,.7);padding-right:13px}
+.studioHero .heroBottom:after{content:'';position:absolute;left:calc(50% + 20px);bottom:2px;width:1px;height:18px;background:linear-gradient(#b79cff,transparent);animation:scrollSignal 1.8s ease-in-out infinite}
+@keyframes scrollSignal{0%,100%{opacity:.25;transform:scaleY(.6);transform-origin:top}50%{opacity:1;transform:scaleY(1);transform-origin:top}}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  .minimicalLoader{animation:none;display:none}
+  .studioPage,.innerPage{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .studioHero .heroBottom:after{animation:none}
+}
+@media(max-width:520px){
+  .minimicalLoader{padding:18px 5vw}
+  .minimicalLoaderMeta{font-size:7px}
+  .minimicalLoaderCore strong{font-size:92px}
+  .minimicalLoaderCount{right:5vw;bottom:18px}
+}
