@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-:root{--bg:#f3f0ea;--surface:#e8e4dc;--ink:#151419;--muted:#6e6a72;--line:rgba(21,20,25,.18);--brand:#4c2b81;--pad:4.2vw;--ease:cubic-bezier(.2,.7,.2,1);--logo-filter:none}
-html[data-theme=dark]{--bg:#0d0c10;--surface:#151319;--ink:#f1eef3;--muted:#aaa5ad;--line:rgba(241,238,243,.17);--logo-filter:invert(1)}
+:root{--bg:#0a0710;--surface:#120d1a;--surface-2:#191126;--ink:#f7f2fb;--muted:#b8afc2;--line:rgba(247,242,251,.15);--line-strong:rgba(247,242,251,.28);--brand:#7c4bd4;--brand-2:#b79cff;--brand-3:#3b1e76;--glow:rgba(124,75,212,.34);--pad:4.2vw;--ease:cubic-bezier(.2,.7,.2,1);--logo-filter:invert(1)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body:before{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(55vw 35vw at 78% 8%,rgba(124,75,212,.2),transparent 62%),radial-gradient(48vw 32vw at 12% 85%,rgba(59,30,118,.16),transparent 66%)}
 a{color:inherit;text-decoration:none}
-button,input,textarea{font:inherit}
+button,input,textarea,select{font:inherit}
 button{color:inherit}
-::selection{background:var(--ink);color:var(--bg)}
-:focus-visible{outline:1px solid var(--brand);outline-offset:4px}
+::selection{background:var(--brand-2);color:#170d22}
+:focus-visible{outline:1px solid var(--brand-2);outline-offset:4px}
 .brandLogo{display:block;width:100%;height:auto;filter:var(--logo-filter)}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#3b2a52;border-radius:20px}
 @media(max-width:900px){:root{--pad:5vw}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
