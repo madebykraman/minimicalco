@@ -6,6 +6,7 @@ import './minimical-home.css'
 import './case-study.css'
 import './inner-shell.css'
 import './feedback-fixes.css'
+import './final-fixes.css'
 
 export const metadata: Metadata = {
   title: 'The Minimical & Co. | Design & Branding Studio',
