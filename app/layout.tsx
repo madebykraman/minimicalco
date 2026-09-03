@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import './project-rail.css'
 import './inner-pages.css'
+import './minimical-home.css'
 
 export const metadata: Metadata = {
   title: 'The Minimical & Co. | Design & Branding Studio',
