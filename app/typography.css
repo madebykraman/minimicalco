@@ -3,9 +3,11 @@
 :root{--heading-font:'Space Grotesk',Manrope,Arial,sans-serif}
 .studioPage h1,.studioPage h2,.studioPage h3,.innerPage h1,.innerPage h2,.innerPage h3,.serviceDetail h1,.serviceDetail h2,.serviceDetail h3,.categoryDetail h1,.categoryDetail h2,.categoryDetail h3{font-family:var(--heading-font)!important;font-weight:500}
 .studioPage h1,.innerPage h1,.serviceDetail h1,.categoryDetail h1{font-weight:600!important;letter-spacing:-.075em!important}
-.siteHeader .brandLogo,.studioHeader .brandLogo{width:auto!important;height:54px!important;max-width:112px!important;object-fit:contain!important;filter:invert(1) brightness(1.08);mix-blend-mode:screen}
+.siteHeader .brandLogo,.studioHeader .brandLogo,.studioFooter .brandLogo{width:auto!important;height:54px!important;max-width:112px!important;object-fit:contain!important;filter:brightness(0) invert(1)!important;opacity:1!important;mix-blend-mode:normal!important;visibility:visible!important}
 .siteHeader .brandLink,.studioHeader .studioLogo{display:flex!important;align-items:center!important;justify-content:flex-start!important;width:112px!important;height:64px!important;overflow:visible!important}
-@media(max-width:850px){.siteHeader .brandLink,.studioHeader .studioLogo{width:94px!important;height:58px!important}.siteHeader .brandLogo,.studioHeader .brandLogo{max-width:94px!important;height:52px!important}}
-@media(max-width:430px){.siteHeader .brandLink,.studioHeader .studioLogo{width:90px!important}.siteHeader .brandLogo,.studioHeader .brandLogo{max-width:90px!important;height:50px!important}}
+.studioFooter .footerBrand{display:flex!important;align-items:center!important;width:140px!important;min-height:64px!important}
+.studioFooter .footerBrand .brandLogo{width:112px!important;height:54px!important}
+@media(max-width:850px){.siteHeader .brandLink,.studioHeader .studioLogo{width:94px!important;height:58px!important}.siteHeader .brandLogo,.studioHeader .brandLogo{max-width:94px!important;height:52px!important}.studioFooter .footerBrand{width:112px!important}.studioFooter .footerBrand .brandLogo{width:94px!important;height:50px!important}}
+@media(max-width:430px){.siteHeader .brandLink,.studioHeader .studioLogo{width:90px!important}.siteHeader .brandLogo,.studioHeader .brandLogo{max-width:90px!important;height:50px!important}.studioFooter .footerBrand .brandLogo{width:90px!important;height:48px!important}}
 .categoryDetail .categoryHero h1,.serviceDetail .serviceHero h1{font-size:clamp(58px,8.5vw,132px)!important}
 .categoryDetail .categoryHero h1 i,.serviceDetail .serviceHero h1 i{font-weight:400!important}
