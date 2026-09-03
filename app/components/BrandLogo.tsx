@@ -1,1 +1,1 @@
-export default function BrandLogo({className='' }: {className?: string}){return <img className={`brandLogo ${className}`} src="/logo.svg" alt="The Minimical & Co."/>}
+export default function BrandLogo({className='' }: {className?: string}){return <img className={`brandLogo ${className}`} src="/assets/branding/logo files/Group 1-1 (2).png" alt="The Minimical & Co."/>}
