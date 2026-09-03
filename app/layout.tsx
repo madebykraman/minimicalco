@@ -4,6 +4,7 @@ import './project-rail.css'
 import './inner-pages.css'
 import './minimical-home.css'
 import './case-study.css'
+import './inner-shell.css'
 
 export const metadata: Metadata = {
   title: 'The Minimical & Co. | Design & Branding Studio',
