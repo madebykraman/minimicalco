@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-:root{--heading-font:'Sora',Manrope,Arial,sans-serif}
+:root{--heading-font:'Space Grotesk',Manrope,Arial,sans-serif}
 .studioPage h1,.studioPage h2,.studioPage h3,.innerPage h1,.innerPage h2,.innerPage h3,.serviceDetail h1,.serviceDetail h2,.serviceDetail h3,.categoryDetail h1,.categoryDetail h2,.categoryDetail h3{font-family:var(--heading-font)!important;font-weight:500}
 .studioPage h1,.innerPage h1,.serviceDetail h1,.categoryDetail h1{font-weight:600!important;letter-spacing:-.075em!important}
 .siteHeader .brandLogo,.studioHeader .brandLogo{width:auto!important;height:54px!important;max-width:112px!important;object-fit:contain!important}
