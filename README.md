@@ -1,6 +1,6 @@
 # The Minimical Co.
 
-Standalone rebuild of minimical.online inspired by the existing Altero/Framer layout and adapted for The Minimical Co.
+Standalone Next.js rebuild of minimical.online for The Minimical & Co., with a dark editorial visual system and project-led portfolio architecture.
 
 ## Stack
 
@@ -12,16 +12,22 @@ Standalone rebuild of minimical.online inspired by the existing Altero/Framer la
 
 ## Principles
 
+- Dark-only visual system
 - No Framer runtime
 - No Framer CMS
 - No Framer form dependency
 - No framerusercontent.com assets
-- Content is local and editable in `app/page.tsx`
-- Responsive layout with the original site's major information architecture preserved
+- Local, editable project and service content
+- Dedicated project, category and service routes
+- Responsive layouts with reduced-motion support
 
 ## Content source
 
-Brand and capability language was adapted from Minimical's public web presence and Kumar Aman's public professional profile. Where a matching case study or client quote was not available, clearly fictional placeholder content was created so the template structure remains complete.
+Brand and capability language was adapted from Minimical's public web presence and Kumar Aman's public professional profile. Where verified case-study metrics or client quotes are not yet available, clearly labelled placeholder content is used so the final structure is ready for replacement with approved material.
+
+## Project visuals
+
+Project visual slots live under `public/visuals/`. Replace the placeholder assets with final project imagery when available.
 
 ## Run locally
 
