@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import './asset-overrides.css'
 import './project-rail.css'
 import './inner-pages.css'
 
