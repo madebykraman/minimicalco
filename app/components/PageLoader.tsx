@@ -5,13 +5,11 @@ import {useEffect,useState} from 'react'
 export default function PageLoader(){
   const [ready,setReady]=useState(false)
   useEffect(()=>{
-    const done=()=>setReady(true)
-    if(document.readyState==='complete'){
-      const timer=window.setTimeout(done,1200)
-      return()=>window.clearTimeout(timer)
-    }
-    window.addEventListener('load',done,{once:true})
-    return()=>window.removeEventListener('load',done)
+    let timer:ReturnType<typeof window.setTimeout>
+    const done=()=>{timer=window.setTimeout(()=>setReady(true),1900)}
+    if(document.readyState==='complete') done()
+    else window.addEventListener('load',done,{once:true})
+    return()=>{window.removeEventListener('load',done);window.clearTimeout(timer)}
   },[])
   if(ready)return null
   return <div className="minimicalLoader" aria-hidden="true">
