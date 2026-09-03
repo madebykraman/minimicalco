@@ -1,113 +1,34 @@
 'use client'
-
 import { useState } from 'react'
-import { ArrowUpRight, Menu, Plus, X } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight, Menu, Plus, X } from 'lucide-react'
+import Link from 'next/link'
 import BrandLogo from './components/BrandLogo'
 import Reveal from './components/Reveal'
 import ThemeToggle from './components/ThemeToggle'
 
-const work = [
-  { n:'01', name:'WHIFFF', type:'Brand identity · Digital', year:'2026', className:'violet', mark:'W' },
-  { n:'02', name:'Enchanted Vows', type:'Identity · Film', year:'2025', className:'paper', mark:'EV' },
-  { n:'03', name:'Lucky Paul', type:'Brand · Photography', year:'2024', className:'mono', mark:'LP' },
-  { n:'04', name:'Health Seva', type:'Communication · Campaign', year:'2024', className:'blue', mark:'HS' },
-  { n:'05', name:'PawPerity', type:'Packaging · Brand', year:'2024', className:'yellow', mark:'PP' },
-  { n:'06', name:'Jaano Junction', type:'Event · Identity', year:'2023', className:'red', mark:'JJ' },
+const work=[
+ {n:'01',name:'WHIFFF',slug:'whifff',type:'Brand identity · Digital',year:'2026',className:'violet',mark:'W'},
+ {n:'02',name:'Enchanted Vows',slug:'enchanted-vows',type:'Identity · Film',year:'2025',className:'paper',mark:'EV'},
+ {n:'03',name:'Lucky Paul',slug:'lucky-paul',type:'Brand · Photography',year:'2024',className:'mono',mark:'LP'},
+ {n:'04',name:'Health Seva',slug:'health-seva',type:'Communication · Campaign',year:'2024',className:'blue',mark:'HS'},
+ {n:'05',name:'PawPerity',slug:'pawperity',type:'Packaging · Brand',year:'2024',className:'yellow',mark:'PP'},
+ {n:'06',name:'Jaano Junction',slug:'jaano-junction',type:'Event · Identity',year:'2023',className:'red',mark:'JJ'}
 ]
+const capabilities=[['01','Strategy','Positioning, naming, architecture, research and creative direction.'],['02','Identity','Visual identity, typography, art direction, systems and guidelines.'],['03','Digital','Websites, digital experiences, campaigns and interfaces.'],['04','Production','Photography, cinematography, editing, motion and post-production.']]
+const principles=[['01','Start with the idea','Before we decide how something should look, we work out what it needs to mean.'],['02','Make it recognisable','A good identity should be understood without having to announce its name.'],['03','Build beyond the logo','The system has to work in a browser, on a package, in a frame and in the real world.']]
+const faqs=[['What is Minimical?','An independent creative studio working across strategy, identity, digital design and production.'],['What can you work on?','Brand identities, digital experiences, campaigns, packaging, photography, film, motion and creative direction.'],['Can you handle a project from strategy to production?','Yes. The studio can stay involved from the first strategic question through identity, digital and final production.'],['Where are you based?','Patna, Bihar, India. The studio works with clients and collaborators across India and internationally.'],['How do I start a project?','Send an email with what you are building, where you are stuck and what you need. We will take it from there.']]
 
-const capabilities = [
-  ['01','Strategy','Positioning, naming, architecture, research and creative direction.'],
-  ['02','Identity','Visual identity, typography, art direction, systems and guidelines.'],
-  ['03','Digital','Websites, digital experiences, campaigns and interfaces.'],
-  ['04','Production','Photography, cinematography, editing, motion and post-production.'],
-]
-
-const principles = [
-  ['01','Start with the idea','Before we decide how something should look, we work out what it needs to mean.'],
-  ['02','Make it recognisable','A good identity should be understood without having to announce its name.'],
-  ['03','Build beyond the logo','The system has to work in a browser, on a package, in a frame and in the real world.'],
-]
-
-const faqs = [
-  ['What is Minimical?','An independent creative studio working across strategy, identity, digital design and production.'],
-  ['What can you work on?','Brand identities, digital experiences, campaigns, packaging, photography, film, motion and creative direction.'],
-  ['Can you handle a project from strategy to production?','Yes. The studio can stay involved from the first strategic question through identity, digital and final production.'],
-  ['Where are you based?','Patna, Bihar, India. The studio works with clients and collaborators across India and internationally.'],
-  ['How do I start a project?','Send an email with what you are building, where you are stuck and what you need. We will take it from there.'],
-]
-
-export default function Home(){
-  const [menu,setMenu]=useState(false)
-  const [faq,setFaq]=useState<number|null>(null)
-
-  return <main>
-    <header className="studioHeader">
-      <a href="#top" className="studioLogo"><BrandLogo/></a>
-      <nav className="studioNav">
-        <a href="#work">Work</a>
-        <a href="#studio">Studio</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div className="studioHeaderRight">
-        <ThemeToggle/>
-        <a className="startLink" href="mailto:contact@minimical.online?subject=Project%20enquiry">Start a project <ArrowUpRight size={13}/></a>
-        <button className="mobileTrigger" onClick={()=>setMenu(!menu)} aria-label="Open menu">{menu?<X size={20}/>:<Menu size={20}/>}</button>
-      </div>
-    </header>
-
-    {menu&&<nav className="mobileNav"><a href="#work" onClick={()=>setMenu(false)}>Work</a><a href="#studio" onClick={()=>setMenu(false)}>Studio</a><a href="#capabilities" onClick={()=>setMenu(false)}>Capabilities</a><a href="#contact" onClick={()=>setMenu(false)}>Contact</a><ThemeToggle/></nav>}
-
-    <section className="editorialHero" id="top">
-      <div className="heroIndex">MINIMICAL / 01</div>
-      <div className="heroIntro"><span>Independent creative studio</span><span>Patna · India · Worldwide</span></div>
-      <div className="heroTitle"><h1>We make<br/><i>ideas</i> visible.</h1><p>Strategy, identity, digital and production for brands with something to say.</p></div>
-      <div className="heroFrame" aria-hidden="true">
-        <div className="frameTop"><span>THE MINIMICAL &amp; CO.</span><span>STUDIO / 2026</span></div>
-        <div className="frameLetter">M</div>
-        <div className="frameRule"/><div className="frameSide">DESIGN<br/>BRANDING<br/>PRODUCTION</div>
-        <div className="frameBottom">A SMALL STUDIO<br/>FOR LARGE IDEAS</div>
-      </div>
-      <div className="heroFoot"><span>Scroll to explore</span><span>Strategy / Identity / Digital / Production</span><span>↘</span></div>
-    </section>
-
-    <section className="studioStatement" id="studio">
-      <Reveal><div className="eyebrowLine"><span>02 / The studio</span><span>About Minimical</span></div><div className="statementGrid"><h2>We believe the best work begins <i>before the design.</i></h2><div><p>Minimical is an independent creative studio built around a simple idea: thinking and making should not be separated.</p><p>We move from strategy to identity to production without handing the idea from one department to another.</p><a href="/about" className="underLink">About the studio <ArrowUpRight size={14}/></a></div></div></Reveal>
-    </section>
-
-    <section className="workSection" id="work">
-      <Reveal><div className="eyebrowLine"><span>03 / Selected work</span><a href="/projects">Archive <ArrowUpRight size={13}/></a></div></Reveal>
-      <div className="workMosaic">{work.map((item,i)=><Reveal key={item.name} className={`workCard card${i+1}`}><a href="/projects"><div className={`workPoster ${item.className}`}><span className="posterNo">{item.n}</span><span className="posterYear">{item.year}</span><strong>{item.mark}</strong><div className="posterName">{item.name}</div><small>{item.type}</small><span className="posterArrow"><ArrowUpRight size={16}/></span></div><div className="workCaption"><span>{item.name}</span><small>{item.type}</small></div></a></Reveal>)}</div>
-    </section>
-
-    <section className="disciplineBar"><div>Strategy</div><div>Identity</div><div>Digital</div><div>Photography</div><div>Film</div><div>Motion</div></section>
-
-    <section className="capabilitySection" id="capabilities">
-      <Reveal><div className="eyebrowLine"><span>04 / Capabilities</span><span>What we do</span></div><div className="capabilityHeading"><h2>One idea.<br/><i>Every expression.</i></h2><p>We choose the tools according to the problem, not the other way around.</p></div></Reveal>
-      <div className="capabilityRows">{capabilities.map(([n,t,d])=><Reveal key={n}><a href="/services"><span>{n}</span><h3>{t}</h3><p>{d}</p><ArrowUpRight size={18}/></a></Reveal>)}</div>
-    </section>
-
-    <section className="practiceSection">
-      <div className="practiceVisual"><span>05 / The practice</span><div className="practiceType">THINK<br/><i>MAKE</i><br/>DELIVER</div><div className="practiceMeta">Strategy → Identity → Expression → Production</div></div>
-      <Reveal><div className="practiceCopy"><span>How we work</span><h2>Small studio.<br/><i>Direct thinking.</i></h2><p>You work with the people actually making the work. That keeps the process close, the decisions quick and the idea intact.</p><div className="practiceStats"><div><strong>500+</strong><small>creative projects</small></div><div><strong>06+</strong><small>years making</small></div><div><strong>01</strong><small>independent studio</small></div></div><a href="/about" className="underLink">More about our practice <ArrowUpRight size={14}/></a></div></Reveal>
-    </section>
-
-    <section className="principlesSection">
-      <Reveal><div className="eyebrowLine"><span>06 / Point of view</span><span>How we think</span></div><h2>Make the idea<br/><i>impossible to ignore.</i></h2></Reveal>
-      <div className="principleList">{principles.map(([n,t,d])=><Reveal key={n}><article><span>{n}</span><div><h3>{t}</h3><p>{d}</p></div></article></Reveal>)}</div>
-    </section>
-
-    <section className="faqSection">
-      <Reveal><div className="eyebrowLine"><span>07 / Questions</span><span>Before we begin</span></div><h2>A few things<br/><i>worth knowing.</i></h2></Reveal>
-      <div className="faqList">{faqs.map(([q,a],i)=><div className="faqRow" key={q}><button onClick={()=>setFaq(faq===i?null:i)}><span>{q}</span>{faq===i?<X size={17}/>:<Plus size={17}/>}</button>{faq===i&&<p>{a}</p>}</div>)}</div>
-    </section>
-
-    <section className="contactSection" id="contact">
-      <div className="contactTop"><span>08 / Start a project</span><span>Minimical · Patna · India</span></div>
-      <h2>Have a good<br/><i>idea?</i></h2>
-      <div className="contactBottom"><p>Tell us what you are building, changing or trying to make better.</p><a href="mailto:contact@minimical.online">contact@minimical.online <ArrowUpRight size={20}/></a></div>
-    </section>
-
-    <footer className="studioFooter"><div className="footerLogo"><BrandLogo/></div><div><span>Studio</span><p>Independent creative studio<br/>Patna, Bihar, India</p></div><div><span>Navigate</span><a href="#work">Work</a><a href="#studio">Studio</a><a href="#capabilities">Capabilities</a><a href="#contact">Contact</a></div><div><span>Connect</span><a href="https://www.instagram.com/theminimical/" target="_blank">Instagram ↗</a><a href="https://www.linkedin.com/company/theminimical/" target="_blank">LinkedIn ↗</a></div><small>© 2026 The Minimical &amp; Co.</small></footer>
-  </main>
-}
+export default function Home(){const[menu,setMenu]=useState(false);const[faq,setFaq]=useState<number|null>(null);return <main>
+<header className="studioHeader"><Link href="#top" className="studioLogo"><BrandLogo/></Link><nav className="studioNav"><Link href="#work">Work</Link><Link href="#studio">Studio</Link><Link href="#capabilities">Capabilities</Link><Link href="#contact">Contact</Link></nav><div className="studioHeaderRight"><ThemeToggle/><Link className="startLink" href="mailto:contact@minimical.online?subject=Project%20enquiry">Start a project <ArrowUpRight size={13}/></Link><button className="mobileTrigger" onClick={()=>setMenu(!menu)} aria-label="Open menu">{menu?<X size={20}/>:<Menu size={20}/>}</button></div></header>
+{menu&&<nav className="mobileNav"><Link href="#work" onClick={()=>setMenu(false)}>Work</Link><Link href="#studio" onClick={()=>setMenu(false)}>Studio</Link><Link href="#capabilities" onClick={()=>setMenu(false)}>Capabilities</Link><Link href="#contact" onClick={()=>setMenu(false)}>Contact</Link><ThemeToggle/></nav>}
+<section className="editorialHero" id="top"><div className="heroIndex">MINIMICAL / 01</div><div className="heroIntro"><span>Independent creative studio</span><span>Patna · India · Worldwide</span></div><div className="heroTitle"><h1>We make<br/><i>ideas</i> visible.</h1><p>Strategy, identity, digital and production for brands with something to say.</p></div><div className="heroFrame" aria-hidden="true"><div className="frameTop"><span>THE MINIMICAL &amp; CO.</span><span>STUDIO / 2026</span></div><div className="frameLetter">M</div><div className="frameRule"/><div className="frameSide">STRATEGY<br/>IDENTITY<br/>DIGITAL<br/>PRODUCTION</div><div className="frameBottom">A SMALL STUDIO<br/>FOR LARGE IDEAS</div></div><div className="heroFoot"><span>Scroll to explore</span><span>Strategy / Identity / Digital / Production</span><span>↘</span></div></section>
+<section className="studioStatement" id="studio"><Reveal><div className="eyebrowLine"><span>02 / The studio</span><span>About Minimical</span></div><div className="statementGrid"><h2>We believe the best work begins <i>before the design.</i></h2><div><p>Minimical is an independent creative studio built around a simple idea: thinking and making should not be separated.</p><p>We move from strategy to identity to production without handing the idea from one department to another.</p><Link href="/about" className="underLink">About the studio <ArrowUpRight size={14}/></Link></div></div></Reveal></section>
+<section className="workSection" id="work"><Reveal><div className="eyebrowLine"><span>03 / Selected work</span><Link href="/projects">Archive <ArrowUpRight size={13}/></Link></div></Reveal><div className="workMosaic">{work.map((item,i)=><Reveal key={item.slug} className={`workCard card${i+1}`}><Link href={`/projects/${item.slug}`}><div className={`workPoster ${item.className}`}><span className="posterNo">{item.n}</span><span className="posterYear">{item.year}</span><strong>{item.mark}</strong><div className="posterName">{item.name}</div><small>{item.type}</small><span className="posterArrow"><ArrowUpRight size={16}/></span></div><div className="workCaption"><span>{item.name}</span><small>{item.type}</small></div></Link></Reveal>)}</div></section>
+<section className="disciplineBar"><div>Strategy</div><div>Identity</div><div>Digital</div><div>Photography</div><div>Film</div><div>Motion</div></section>
+<section className="capabilitySection" id="capabilities"><Reveal><div className="eyebrowLine"><span>04 / Capabilities</span><span>What we do</span></div><div className="capabilityHeading"><h2>One idea.<br/><i>Every expression.</i></h2><p>We choose the tools according to the problem, not the other way around.</p></div></Reveal><div className="capabilityRows">{capabilities.map(([n,t,d])=><Reveal key={n}><Link href="/services"><span>{n}</span><h3>{t}</h3><p>{d}</p><ArrowUpRight size={18}/></Link></Reveal>)}</div></section>
+<section className="practiceSection"><div className="practiceVisual"><span>05 / The practice</span><div className="practiceType">THINK<br/><i>MAKE</i><br/>DELIVER</div><div className="practiceMeta">Strategy → Identity → Expression → Production</div></div><Reveal><div className="practiceCopy"><span>How we work</span><h2>Small studio.<br/><i>Direct thinking.</i></h2><p>You work with the people actually making the work. That keeps the process close, the decisions quick and the idea intact.</p><div className="practiceStats"><div><strong>500+</strong><small>creative projects</small></div><div><strong>06+</strong><small>years making</small></div><div><strong>01</strong><small>independent studio</small></div></div><Link href="/about" className="underLink">More about our practice <ArrowUpRight size={14}/></Link></div></Reveal></section>
+<section className="principlesSection"><Reveal><div className="eyebrowLine"><span>06 / Point of view</span><span>How we think</span></div><h2>Make the idea<br/><i>impossible to ignore.</i></h2></Reveal><div className="principleList">{principles.map(([n,t,d])=><Reveal key={n}><article><span>{n}</span><div><h3>{t}</h3><p>{d}</p></div></article></Reveal>)}</div></section>
+<section className="faqSection"><Reveal><div className="eyebrowLine"><span>07 / Questions</span><span>Before we begin</span></div><h2>A few things<br/><i>worth knowing.</i></h2></Reveal><div className="faqList">{faqs.map(([q,a],i)=><div className="faqRow" key={q}><button onClick={()=>setFaq(faq===i?null:i)}><span>{q}</span>{faq===i?<X size={17}/>:<Plus size={17}/>}</button>{faq===i&&<p>{a}</p>}</div>)}</div></section>
+<section className="contactSection" id="contact"><div className="contactTop"><span>08 / Start a project</span><span>Minimical · Patna · India</span></div><h2>Have a good<br/><i>idea?</i></h2><div className="contactBottom"><p>Tell us what you are building, changing or trying to make better.</p><Link href="/contact">Start the conversation <ArrowUpRight size={20}/></Link></div></section>
+<footer className="studioFooter"><div className="footerLogo"><BrandLogo/></div><div><span>Studio</span><p>Independent creative studio<br/>Patna, Bihar, India</p></div><div><span>Navigate</span><Link href="#work">Work</Link><Link href="#studio">Studio</Link><Link href="#capabilities">Capabilities</Link><Link href="#contact">Contact</Link></div><div><span>Connect</span><a href="https://www.instagram.com/theminimical/" target="_blank">Instagram ↗</a><a href="https://www.linkedin.com/company/theminimical/" target="_blank">LinkedIn ↗</a></div><small>© 2026 The Minimical &amp; Co.</small></footer>
+</main>}
